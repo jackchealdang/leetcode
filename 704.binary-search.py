@@ -7,17 +7,16 @@
 # @lc code=start
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        idx = len(nums)//2
+        l, r = 0, len(nums) - 1
 
-        while len(nums) > 1:
-            if nums[idx] > target:
-                nums = nums[0:idx]
-            elif nums[idx] < target:
-                nums = nums[idx:len(nums)+1]
-            idx = len(nums)//2
-            if nums[idx] == target:
-                return idx
-            print(idx)
+        while l <= r:
+            m = (l + r) // 2
+            if nums[m] > target:
+                r = m - 1
+            elif nums[m] < target:
+                l = m + 1
+            else:
+                return m
 
         return -1
 # @lc code=end
