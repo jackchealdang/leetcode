@@ -8,18 +8,17 @@
 class Solution:
     def isValid(self, s: str) -> bool:
 
-        # Stack for storing open parenthesis. Pop on closing parenthesis.
         stack = []
         closeToOpen = {')': '(', ']': '[', '}': '{'}
 
-        for c in s:
-            if c in closeToOpen:
-                if stack and stack[-1] == closeToOpen[c]:
+        for n in s:
+            if n in closeToOpen:
+                if stack and stack[-1] == closeToOpen[n]:
                     stack.pop()
                 else:
                     return False
             else:
-                stack.append(c)
+                stack.append(n)
 
         return True if not stack else False
 

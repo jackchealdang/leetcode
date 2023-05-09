@@ -7,29 +7,16 @@
 # @lc code=start
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
+
         if len(s) != len(t):
             return False
 
-        # s_letters = {}
-        # t_letters = {}
+        countS, countT = {}, {}
 
-        # for x in range(len(s)):
-        #     if s[x] not in s_letters:
-        #         s_letters.update({s[x]: 1})
-        #     else:
-        #         s_letters.update({s[x]: s_letters[s[x]]+1})
-        #     if t[x] not in t_letters:
-        #         t_letters.update({t[x]: 1})
-        #     else:
-        #         t_letters.update({t[x]: t_letters[t[x]]+1})
+        for n in range(len(s)):
+            countS[s[n]] = countS.get(s[n], 0) + 1
+            countT[t[n]] = countT.get(t[n], 0) + 1
 
-        s = ''.join(sorted(s))
-        t = ''.join(sorted(t))
-
-        if s == t:
-            return True
-
-        return False
-
+        return countS == countT
 
 # @lc code=end

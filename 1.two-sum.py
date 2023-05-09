@@ -8,10 +8,12 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
 
-        for x in range(len(nums)):
-            complement = target-nums[x]
-            if complement in nums and nums.index(complement) != x:
-                return (x, nums.index(complement))
+        prevMap = {}
 
+        for i, n in enumerate(nums):
+            diff = target - n
+            if diff in prevMap:
+                return [prevMap[diff], i]
+            prevMap[n] = i
 
 # @lc code=end
